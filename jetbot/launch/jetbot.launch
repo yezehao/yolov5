@@ -1,0 +1,19 @@
+<launch>
+    <!-- Launch LF Publisher node -->
+    <node name="LF_Publisher" pkg="jetbot" type="LF_Publisher.py" output="screen">
+        <remap from="LF_Command" to="LF_Command_topic"/>
+    </node>
+
+    <!-- Launch TOF Publisher node -->
+    <node name="TOF_Publisher" pkg="jetbot" type="TOF_Publisher.py" output="screen">
+        <remap from="TOF" to="TOF_topic"/>
+    </node>
+
+    <!-- Launch Robot Movement node -->
+    <node name="Jetbot_Subscriber" pkg="jetbot" type="Robot_Movement.py" output="screen">
+        <remap from="LF_Command" to="LF_Command_topic"/>
+        <remap from="TOF" to="TOF_topic"/> 
+        <remap from="OR_Status" to="OR_Status_topic"/>
+    </node>
+
+</launch>
